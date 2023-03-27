@@ -2,10 +2,15 @@ package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class MemoryMemberRepository implements  MemberRepository{
+
+    private  static Map<Long, Member> store = new HashMap<>();
+    private
     @Override
     public Member save(Member member) {
         return null;
