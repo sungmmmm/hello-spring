@@ -2,14 +2,21 @@ package hello.hellospring.repository;
 
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Member;
+
 public class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
     @Test
     public void save(){
+        Member member = new Member();
+        member.setName("spring");
 
-        //수정중
+        repository.save(member);
+
+        Member result = repository.findById(member.getId()).get();
+        System.out.println("result = " +(result ==member));
 
     }
 }
