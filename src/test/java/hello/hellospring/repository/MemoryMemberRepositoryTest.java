@@ -2,6 +2,7 @@ package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -10,7 +11,16 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.*;
 
 public class MemoryMemberRepositoryTest {
-    MemberRepository repository = new MemoryMemberRepository();
+    MemoryMemberRepository repository = new MemoryMemberRepository();
+    //MemoryMemberRepository 를 만 테스트 MemberRepository를 대체해서 써주기
+    //+ MemoryMemberRepositor에 afterEach추가
+
+    @AfterEach //매서드가 끝날때마다 어떤 일을 하는것 (callback method- 다른 인자로 이용, 이벤트에 의해 호출되어지는 함수)
+    public void afterEach() {
+    repository.clearStore();
+        //+ MemoryMemberRepositor에 afterEach추가, test 가 끝날때마다 repoistory를 clear해준다.
+    }
+
     @Test
     public void save(){
         Member member = new Member();
@@ -60,4 +70,5 @@ public class MemoryMemberRepositoryTest {
         assertThat(result.size()).isEqualTo(2); //검증 (3)은 에러 나온다
 
     }
+
 }

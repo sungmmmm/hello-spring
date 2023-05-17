@@ -41,4 +41,8 @@ public class MemoryMemberRepository implements  MemberRepository{
         return new ArrayList<>(store.values());
         //values(=members임)
     }
+    public void clearStore() {
+        store.clear();
+    }
+
 }
