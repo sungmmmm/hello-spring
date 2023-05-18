@@ -34,6 +34,8 @@ class MemberServiceTest {
 
     @Test
     void findMembers() {
+        Member member = new Member();
+
     }
 
     @Test
