@@ -17,7 +17,7 @@ class MemberServiceTest {
     void join() { //(shift+f6)으로 한글 이름으로 변경해도 ㄱㅊ 실제로 빌드할때 code에 포함x ex. 회원가입
         //Given 먼가 주어지고
         Member member = new Member();
-        member.setName('hello');
+        member.setName("hello");
 
 
         //When 이걸 실행했을때
@@ -31,7 +31,26 @@ class MemberServiceTest {
 
 
     }
+      @Test
+      public void 중복_회원_예외(){
+         //given
+          Member member1 = new Member();
+          member1.setName("spring");
 
+          Member member2 = new Member();
+          member1.setName("spring");
+
+          //when
+          memberService.join(member1);
+          try {
+              memberService.join(member2);
+              fail();
+          } catch (IllegalStateException e) {
+              assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");//MemberService IllegalStateException를 검증
+
+          }
+          //then
+      }
     @Test
     void findMembers() {
         Member member = new Member();
