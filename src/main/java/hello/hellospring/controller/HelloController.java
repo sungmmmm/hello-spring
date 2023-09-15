@@ -30,15 +30,17 @@ public class HelloController {
     }
     @GetMapping("hello-api")
     @ResponseBody
-    public  Helloapi(@RequestParam("name") String name){
+    public Hello Helloapi(@RequestParam("name") String name){
         Hello hello =new Hello();
-        hello.setName(name);
+        hello.setName(name); //value값
         return hello;
+       // "<HTML>,</HTML>" 예전 XML버전
     }
 
     static class Hello{
-        private  String name;
+        private  String name; //key값
     //생성자 , getter and setter 자동완성 command + n (왼쪽 클릭으로도 설정 가능 )
+        //java been 표준 방식 property 방식이라고도 함
         public String getName() {
             return name;
         }
